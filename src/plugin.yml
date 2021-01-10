@@ -1,0 +1,10 @@
+name: SurvVsHunts
+main: ru.FullmetalTatarin.SurvVsHunts
+version: 1.0
+author: FullmetalTatarin
+commands:
+  svh:
+    description: Show SurvVsHunts command
+  startgame:
+    description: Start game, who entered this command become survivor
+    aliases: [go]
