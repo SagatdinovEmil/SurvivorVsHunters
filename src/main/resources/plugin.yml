@@ -1,5 +1,5 @@
 name: SurvVsHunts
-main: code.SurvVsHunts
+main: SurvVsHunts.main
 version: 1.0
 authors: [FullmetalTatarin, Jipok]
 commands:
