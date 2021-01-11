@@ -34,9 +34,11 @@ public class stage3_hunting implements Listener {
     }
 
     public void updateHunterCompass() {
+        Player target = plugin.getServer().getPlayer(plugin.surv_player);
+        if (target == null) return;
         for (Player player: plugin.getServer().getOnlinePlayers()) {
             if (player.getName() != plugin.surv_player) {
-                player.setCompassTarget(plugin.getServer().getPlayer(plugin.surv_player).getLocation());
+                player.setCompassTarget(target.getLocation());
             }
         }
     }
@@ -58,7 +60,7 @@ public class stage3_hunting implements Listener {
         // Start updating compass
         plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, ()->{
             updateHunterCompass();
-        }, 20*3L, 20*3L);
+        }, 0, 30);
         plugin.say(plugin.getConfig().getString("messages.hunt_starts"));
         plugin.counter(plugin.getConfig().getInt("game_duration") * 60,
         plugin.getConfig().getString("messages.game_ends_after"), END);
