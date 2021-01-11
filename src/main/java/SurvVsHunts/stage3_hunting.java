@@ -30,7 +30,7 @@ public class stage3_hunting implements Listener {
         meta.setDisplayName(DARK_BLUE + "Hunter's compass");
         meta.addEnchant(VANISHING_CURSE,1, false);
         compass.setItemMeta(meta);
-        p.getInventory().setItemInMainHand(compass);
+        p.getInventory().setItem(4, compass);
     }
 
     public void updateHunterCompass() {

@@ -32,7 +32,7 @@ public class stage2_handicap implements Listener {
             meta.setLodestoneTracked(false);
             meta.setLodestone(portal);
             compass.setItemMeta(meta);
-            player.getInventory().setItemInMainHand(compass);
+            player.getInventory().setItem(4, compass);
         }
         plugin.say(plugin.getConfig().getString("messages.game_started"));
         plugin.counter(plugin.getConfig().getInt("handicap"), 
