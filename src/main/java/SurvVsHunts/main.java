@@ -19,12 +19,24 @@ public class main extends JavaPlugin {
     public final static int HUNTING = 3;
     public final static int END = 4;
 
+    public String getTranslation(String name, Object... values) {
+        String lang = getConfig().getString("lang");
+        String format = getConfig().getString(lang + '.' + name);
+        return translateAlternateColorCodes('&', String.format(format, values));
+    }
 
     // Send message to all players
-    public void say(String msg) {
+    public void say(String msg, Object... values) {
+        String text = getTranslation(msg, values);
+        getLogger().info(text);
         for (Player player : getServer().getOnlinePlayers()) {
-            player.sendMessage(translateAlternateColorCodes('&', msg));
+            player.sendMessage(text);
         }
+    }
+
+    // Send message to one player
+    public void say(Player player, String msg, Object... values) {
+        player.sendMessage(getTranslation(msg, values));
     }
 
     // Counts down the remaining time
@@ -35,9 +47,9 @@ public class main extends JavaPlugin {
             });
         } else {
             if (value <= 60) {
-                say(String.format(msg, value) + this.getConfig().getString("messages.sec"));
+                say(msg, value, getTranslation("sec"));
             } else {
-                say(String.format(msg, value / 60) + this.getConfig().getString("messages.min"));
+                say(msg, value / 60, getTranslation("min"));
             }
             task = getServer().getScheduler().runTaskLaterAsynchronously(this, () -> { 
                 counter(value / 2, msg, next_stage); 

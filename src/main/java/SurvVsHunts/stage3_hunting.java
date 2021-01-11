@@ -61,9 +61,8 @@ public class stage3_hunting implements Listener {
         plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, ()->{
             updateHunterCompass();
         }, 0, 30);
-        plugin.say(plugin.getConfig().getString("messages.hunt_starts"));
-        plugin.counter(plugin.getConfig().getInt("game_duration") * 60,
-        plugin.getConfig().getString("messages.game_ends_after"), END);
+        plugin.say("hunt_starts");
+        plugin.counter(plugin.getConfig().getInt("game_duration") * 60, "game_ends_after", END);
     }
 
     // Joining new hunters

@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import static org.bukkit.ChatColor.*;
 
 import static SurvVsHunts.main.*;
 
@@ -26,8 +25,7 @@ public class stage1_prelude implements Listener {
     @EventHandler
     public void playerMoveEvent(PlayerMoveEvent e) {
         e.setCancelled(true);
-        e.getPlayer().sendMessage(translateAlternateColorCodes('&',
-         plugin.getConfig().getString("messages.game_doesnt_start")));
+        plugin.say(e.getPlayer(), "game_doesnt_start");
     }
 
     // Make players look down
@@ -38,8 +36,7 @@ public class stage1_prelude implements Listener {
         Location loc = p.getLocation();
         loc.setPitch(90);
         p.teleport(loc);
-        p.sendMessage(translateAlternateColorCodes('&',
-        plugin.getConfig().getString("messages.enter_instructions")));
+        plugin.say(p, "enter_instructions");
     }
 
     // Stage end by /startgame or /go

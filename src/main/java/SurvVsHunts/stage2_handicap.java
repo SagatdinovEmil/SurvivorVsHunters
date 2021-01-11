@@ -6,7 +6,6 @@ import org.bukkit.event.player.*;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.entity.Player;
-import static org.bukkit.ChatColor.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.CompassMeta;
 
@@ -26,7 +25,7 @@ public class stage2_handicap implements Listener {
         if (plugin.getConfig().getBoolean("gift_compass")) {
             ItemStack compass = new ItemStack(Material.COMPASS);
             CompassMeta meta = (CompassMeta) compass.getItemMeta();
-            meta.setDisplayName(DARK_PURPLE + "Compass to ruined portal");
+            meta.setDisplayName(plugin.getTranslation("gift_compass_name"));
             Location portal = player.getLocation().getWorld().locateNearestStructure(player.getLocation(),
                     StructureType.RUINED_PORTAL, 1000, true);
             meta.setLodestoneTracked(false);
@@ -34,17 +33,15 @@ public class stage2_handicap implements Listener {
             compass.setItemMeta(meta);
             player.getInventory().setItem(4, compass);
         }
-        plugin.say(plugin.getConfig().getString("messages.game_started"));
-        plugin.counter(plugin.getConfig().getInt("handicap"), 
-        plugin.getConfig().getString("messages.handicup_ends"), HUNTING);
+        plugin.say("game_started");
+        plugin.counter(plugin.getConfig().getInt("handicap"), "handicup_ends", HUNTING);
     }
 
     // Prevent spectators(hunters) from moving and looking
     @EventHandler
     public void playerMoveEvent(PlayerMoveEvent e) {
         if (e.getPlayer().getName() != plugin.surv_player) {
-            e.getPlayer().sendMessage(translateAlternateColorCodes('&', 
-            plugin.getConfig().getString("messages.handicup_doesnt_end")));
+            plugin.say(e.getPlayer(), "handicup_doesnt_end");
             e.setCancelled(true);
         }
     }
@@ -64,7 +61,7 @@ public class stage2_handicap implements Listener {
     @EventHandler
     public void playerDeathEvent(PlayerDeathEvent e) {
         if (e.getEntity().getName() == plugin.surv_player) {
-            plugin.say(plugin.getConfig().getString("messages.surv_die_before_hunt_starts"));
+            plugin.say("surv_die_before_hunt_starts");
             plugin.surv_player = "";
             plugin.change_stage(END);
         }
