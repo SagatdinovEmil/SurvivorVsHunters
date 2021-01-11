@@ -70,4 +70,10 @@ public class stage2_handicap implements Listener {
         }
     }
 
+    // Prevent spectators from teleporting
+    @EventHandler
+    public void playerTeleportEvent(PlayerTeleportEvent e) {
+        e.setCancelled(true);
+    }
+
 }
