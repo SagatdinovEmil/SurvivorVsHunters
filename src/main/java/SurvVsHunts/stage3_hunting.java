@@ -44,6 +44,9 @@ public class stage3_hunting implements Listener {
     // Stage start
     public stage3_hunting(main plugin) {
         this.plugin = plugin;
+        if (plugin.getConfig().getBoolean("hunt_in_night")) {
+            Bukkit.getPlayer(plugin.surv_player).getWorld().setFullTime(13000);
+        }
         // Let go of the hunters
         for (Player p : plugin.getServer().getOnlinePlayers()) {
             if (p.getName() != plugin.surv_player) {

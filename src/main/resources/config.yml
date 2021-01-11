@@ -1,6 +1,7 @@
 handicap: 90
 game_duration: 15
 gift_compass: true
+hunt_in_night: true
 
 messages:
   game_doesnt_start: "&4Game doesn't start!"
