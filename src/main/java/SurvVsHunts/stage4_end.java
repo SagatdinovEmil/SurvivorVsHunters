@@ -1,7 +1,6 @@
 package SurvVsHunts;
 
 import org.bukkit.event.Listener;
-import static org.bukkit.ChatColor.*;
 
 
 public class stage4_end implements Listener {

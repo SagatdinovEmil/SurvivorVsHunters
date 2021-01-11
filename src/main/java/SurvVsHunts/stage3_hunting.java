@@ -44,6 +44,7 @@ public class stage3_hunting implements Listener {
     // Stage start
     public stage3_hunting(main plugin) {
         this.plugin = plugin;
+        // Turn on the night
         if (plugin.getConfig().getBoolean("hunt_in_night")) {
             Bukkit.getPlayer(plugin.surv_player).getWorld().setFullTime(13000);
         }
@@ -72,6 +73,7 @@ public class stage3_hunting implements Listener {
         }
     }
 
+    // Give a compass to the respawned hunters
     @EventHandler
     public void playerRespawnEvent(PlayerRespawnEvent e) {
         if (e.getPlayer().getName() != plugin.surv_player) {
@@ -79,6 +81,7 @@ public class stage3_hunting implements Listener {
         }
     }
 
+    // Stage end
     @EventHandler
     public void playerDeathEvent(PlayerDeathEvent e) {
         if (e.getEntity().getName() == plugin.surv_player) {

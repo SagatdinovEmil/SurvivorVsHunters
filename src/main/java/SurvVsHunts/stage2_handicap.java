@@ -39,7 +39,7 @@ public class stage2_handicap implements Listener {
         plugin.getConfig().getString("messages.handicup_ends"), HUNTING);
     }
 
-    // Prevent hunters from moving and looking
+    // Prevent spectators(hunters) from moving and looking
     @EventHandler
     public void playerMoveEvent(PlayerMoveEvent e) {
         if (e.getPlayer().getName() != plugin.surv_player) {
@@ -49,7 +49,7 @@ public class stage2_handicap implements Listener {
         }
     }
 
-    // Make hunters look down
+    // Make spectators(hunters) look down
     @EventHandler
     public void playerJoinEvent(PlayerJoinEvent e) {
         if (e.getPlayer().getName() != plugin.surv_player) {
@@ -70,7 +70,7 @@ public class stage2_handicap implements Listener {
         }
     }
 
-    // Prevent spectators from teleporting
+    // Prevent spectators(hunters) from teleporting
     @EventHandler
     public void playerTeleportEvent(PlayerTeleportEvent e) {
         e.setCancelled(true);

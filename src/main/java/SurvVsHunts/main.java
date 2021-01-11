@@ -5,7 +5,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
-import org.bukkit.ChatColor.*;
 
 import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
