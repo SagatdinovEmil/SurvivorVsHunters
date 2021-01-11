@@ -1,3 +1,17 @@
 handicap: 90
 game_duration: 15
-gift_comapss: true
+gift_compass: true
+
+messages:
+  game_doesnt_start: "&4Game doesn't start!"
+  enter_instructions: "&1Game will start, when somebody use /startgame or /go, man, who used it became survivor"
+  game_started: "&4Game starts! RUN, SURV, RUN!"
+  handicup_ends: "&5Handicup ends after %d "
+  handicup_doesnt_end: "&4Handicup doesn't end!"
+  surv_die_before_hunt_starts: "&1Surv dies before hunt starts! Make fun of him!"
+  hunt_starts: "&2Hunt began!"
+  game_ends_after: "&4Survivor wins after %d "
+  survivor_wins: "&2Survivor wins!"
+  hunters_win: "&4Hunts win!"
+  sec: "sec"
+  min: "min"

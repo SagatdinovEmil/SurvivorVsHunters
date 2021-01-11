@@ -11,9 +11,9 @@ public class stage4_end implements Listener {
     public stage4_end(main plugin) {
         this.plugin = plugin;
         if (plugin.surv_player == "") {
-            plugin.say(DARK_GREEN + "Survivor wins!");
+            plugin.say(plugin.getConfig().getString("messages.hunters_win"));
         } else {
-            plugin.say(DARK_RED + "Game ends! Hunters win!");
+            plugin.say(plugin.getConfig().getString("messages.survivor_wins"));
         };
     }
 

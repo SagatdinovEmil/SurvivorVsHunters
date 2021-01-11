@@ -23,7 +23,7 @@ public class stage2_handicap implements Listener {
         Player player = Bukkit.getPlayer(plugin.surv_player);
         player.setGameMode(GameMode.SURVIVAL);
         // Give compass
-        if (plugin.getConfig().getBoolean("gift_comapss")) {
+        if (plugin.getConfig().getBoolean("gift_compass")) {
             ItemStack compass = new ItemStack(Material.COMPASS);
             CompassMeta meta = (CompassMeta) compass.getItemMeta();
             meta.setDisplayName(DARK_PURPLE + "Compass to ruined portal");
@@ -34,15 +34,17 @@ public class stage2_handicap implements Listener {
             compass.setItemMeta(meta);
             player.getInventory().setItemInMainHand(compass);
         }
-        plugin.say(DARK_RED + "Game started! RUN, SURV, RUN");
-        plugin.counter(plugin.getConfig().getInt("handicap"), "Handicap ends after %d", HUNTING);
+        plugin.say(plugin.getConfig().getString("messages.game_started"));
+        plugin.counter(plugin.getConfig().getInt("handicap"), 
+        plugin.getConfig().getString("messages.handicup_ends"), HUNTING);
     }
 
     // Prevent hunters from moving and looking
     @EventHandler
     public void playerMoveEvent(PlayerMoveEvent e) {
         if (e.getPlayer().getName() != plugin.surv_player) {
-            e.getPlayer().sendMessage(DARK_PURPLE + "Handicap does not end!");
+            e.getPlayer().sendMessage(translateAlternateColorCodes('&', 
+            plugin.getConfig().getString("messages.handicup_doesnt_end")));
             e.setCancelled(true);
         }
     }
@@ -62,7 +64,7 @@ public class stage2_handicap implements Listener {
     @EventHandler
     public void playerDeathEvent(PlayerDeathEvent e) {
         if (e.getEntity().getName() == plugin.surv_player) {
-            plugin.say(DARK_RED + "The loser is dead! Make fun of him!");
+            plugin.say(plugin.getConfig().getString("messages.surv_die_before_hunt_starts"));
             plugin.surv_player = "";
             plugin.change_stage(END);
         }

@@ -5,6 +5,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
+import org.bukkit.ChatColor.*;
+
+import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
 public class main extends JavaPlugin {
     private Listener stage = null;
@@ -21,7 +24,7 @@ public class main extends JavaPlugin {
     // Send message to all players
     public void say(String msg) {
         for (Player player : getServer().getOnlinePlayers()) {
-            player.sendMessage(msg);
+            player.sendMessage(translateAlternateColorCodes('&', msg));
         }
     }
 
@@ -30,10 +33,10 @@ public class main extends JavaPlugin {
         if (value <= 1) {
             change_stage(next_stage);
         } else {
-            if (value < 60) {
-                say(String.format(msg, value) + "sec");
+            if (value <= 60) {
+                say(String.format(msg, value) + this.getConfig().getString("messages.sec"));
             } else {
-                say(String.format(msg, value / 60) + "min");
+                say(String.format(msg, value / 60) + this.getConfig().getString("messages.min"));
             }
             task = getServer().getScheduler().runTaskLaterAsynchronously(this, () -> { 
                 counter(value / 2, msg, next_stage); 

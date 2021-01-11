@@ -26,7 +26,8 @@ public class stage1_prelude implements Listener {
     @EventHandler
     public void playerMoveEvent(PlayerMoveEvent e) {
         e.setCancelled(true);
-        e.getPlayer().sendMessage(DARK_PURPLE + "Game does not start!");
+        e.getPlayer().sendMessage(translateAlternateColorCodes('&',
+         plugin.getConfig().getString("messages.game_doesnt_start")));
     }
 
     // Make players look down
@@ -37,7 +38,8 @@ public class stage1_prelude implements Listener {
         Location loc = p.getLocation();
         loc.setPitch(90);
         p.teleport(loc);
-        p.sendMessage("To start the game, someone has to write " + BLUE + "/go");
+        p.sendMessage(translateAlternateColorCodes('&',
+        plugin.getConfig().getString("messages.enter_instructions")));
     }
 
     // Stage end by /startgame or /go
