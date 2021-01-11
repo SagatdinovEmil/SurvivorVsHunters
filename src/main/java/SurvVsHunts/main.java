@@ -31,7 +31,9 @@ public class main extends JavaPlugin {
     // Counts down the remaining time
     public void counter(int value, String msg, int next_stage) {
         if (value <= 1) {
-            change_stage(next_stage);
+            getServer().getScheduler().runTask(this, () -> {
+                change_stage(next_stage);
+            });
         } else {
             if (value <= 60) {
                 say(String.format(msg, value) + this.getConfig().getString("messages.sec"));
