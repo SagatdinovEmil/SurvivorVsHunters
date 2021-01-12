@@ -18,3 +18,18 @@ en_us:
   hunters_win: "&4Hunts win!"
   sec: "sec"
   min: "min"
+
+ru_ru:
+  gift_compass_name: "&3Компас на разрушенный портал"
+  game_doesnt_start: "&4Игра ещё не началась!"
+  enter_instructions: "Игра начнётся когда кто-нибудь станет жужелицей написав &e/start&f"
+  game_started: "&4Игра началась! БЕГИ, ЖУЖЕЛИЦА, БЕГИ!!!"
+  handicup_ends: "&5Фора закончится через %d %s"
+  handicup_doesnt_end: "&4Жужелице дана фора. Она ещё не закончилась!"
+  surv_die_before_hunt_starts: "&1Оно погибло до начала игры! Насмехайтесь над ним!"
+  hunt_starts: "&2Открытие охоты!"
+  game_ends_after: "&4Жужелица победит через %d %s"
+  survivor_wins: "&2Жужелица победила!"
+  hunters_win: "&4Охотники победили!"
+  sec: "сек"
+  min: "мин"
