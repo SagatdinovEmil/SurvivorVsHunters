@@ -46,10 +46,14 @@ public class main extends JavaPlugin {
                 change_stage(next_stage);
             });
         } else {
-            if (value <= 60) {
-                say(msg, value, getTranslation("sec"));
+            if (value <= 60*5) {
+                if (value > 60) {
+                    say(msg, getTranslation("minsec", value / 60, value % 60));
+                } else {
+                    say(msg, getTranslation("sec", value));
+                }
             } else {
-                say(msg, value / 60, getTranslation("min"));
+                say(msg, getTranslation("min", value / 60));
             }
             task = getServer().getScheduler().runTaskLaterAsynchronously(this, () -> { 
                 counter(value / 2, msg, next_stage); 
