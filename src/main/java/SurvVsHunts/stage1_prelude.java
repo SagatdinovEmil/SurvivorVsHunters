@@ -18,7 +18,7 @@ public class stage1_prelude implements Listener {
     // Stage start
     public stage1_prelude(main plugin) {
         this.plugin = plugin;
-        plugin.getCommand("startgame").setExecutor(new StartgameCmd(plugin));
+        plugin.getCommand("start").setExecutor(new StartgameCmd(plugin));
     }
 
     // Prevent players from moving and looking
@@ -51,7 +51,7 @@ public class stage1_prelude implements Listener {
                 return false;
             }
             plugin.surv_player = sender.getName();
-            plugin.getCommand("startgame").setExecutor(null);
+            plugin.getCommand("start").setExecutor(null);
             plugin.change_stage(HANDICAP);
             return true;
         }

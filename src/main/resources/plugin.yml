@@ -3,6 +3,5 @@ main: SurvVsHunts.main
 version: 1.0
 authors: [FullmetalTatarin, Jipok]
 commands:
-  startgame:
+  start:
     description: Start game, who entered this command become survivor
-    aliases: [go]
