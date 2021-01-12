@@ -6,7 +6,6 @@ import org.bukkit.event.player.*;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.entity.Player;
-import static org.bukkit.ChatColor.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.CompassMeta;
 import static org.bukkit.enchantments.Enchantment.VANISHING_CURSE;
@@ -21,7 +20,7 @@ public class stage3_hunting implements Listener {
         // Dont give duplicate
         for(ItemStack item : p.getInventory().getContents()){
             if (item == null) continue;
-            if(item.getItemMeta().getDisplayName().equals(DARK_BLUE + "Hunter's compass")){
+            if(item.getItemMeta().getDisplayName().equals(plugin.getTranslation("hunter_compass"))){
                 return;
             }
         }
@@ -29,6 +28,7 @@ public class stage3_hunting implements Listener {
         CompassMeta meta = (CompassMeta) compass.getItemMeta();
         meta.setDisplayName(plugin.getTranslation("hunter_compass"));
         meta.addEnchant(VANISHING_CURSE,1, false);
+        meta.setLodestoneTracked(false);
         compass.setItemMeta(meta);
         p.getInventory().setItem(4, compass);
     }
@@ -37,8 +37,13 @@ public class stage3_hunting implements Listener {
         Player target = plugin.getServer().getPlayer(plugin.surv_player);
         if (target == null) return;
         for (Player player: plugin.getServer().getOnlinePlayers()) {
-            if (player.getName() != plugin.surv_player) {
-                player.setCompassTarget(target.getLocation());
+            for(ItemStack item : player.getInventory().getContents()){
+                if (item == null) continue;
+                if(item.getItemMeta().getDisplayName().equals(plugin.getTranslation("hunter_compass"))){
+                    CompassMeta meta = (CompassMeta) item.getItemMeta();
+                    meta.setLodestone(target.getLocation());
+                    item.setItemMeta(meta);
+                }
             }
         }
     }
