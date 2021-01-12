@@ -7,6 +7,7 @@ lang: "en_us"
 
 en_us:
   gift_compass_name: "&3Compass to ruined portal"
+  hunter_compass: "&3Hunter's compass"
   game_doesnt_start: "&4Game doesn't start!"
   enter_instructions: "Game will start, when somebody use &e/start&f (became survivor)"
   game_started: "&aGame starts! RUN, SURV, RUN!"
@@ -23,6 +24,7 @@ en_us:
 
 ru_ru:
   gift_compass_name: "&3Компас на разрушенный портал"
+  hunter_compass: "&3Охотничий компас"
   game_doesnt_start: "&4Игра ещё не началась!"
   enter_instructions: "Игра начнётся когда кто-нибудь станет жужелицей (&e/start&f)"
   game_started: "&aИгра началась! БЕГИ, ЖУЖЕЛИЦА, БЕГИ!!!"

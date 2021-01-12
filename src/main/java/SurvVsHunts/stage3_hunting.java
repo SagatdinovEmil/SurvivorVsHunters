@@ -17,7 +17,7 @@ import static SurvVsHunts.main.*;
 public class stage3_hunting implements Listener {
     main plugin;
 
-    public static void giveSurvivorCompass(Player p) {
+    public void giveSurvivorCompass(Player p) {
         // Dont give duplicate
         for(ItemStack item : p.getInventory().getContents()){
             if (item == null) continue;
@@ -27,7 +27,7 @@ public class stage3_hunting implements Listener {
         }
         ItemStack compass = new ItemStack(Material.COMPASS);
         CompassMeta meta = (CompassMeta) compass.getItemMeta();
-        meta.setDisplayName(DARK_BLUE + "Hunter's compass");
+        meta.setDisplayName(plugin.getTranslation("hunter_compass"));
         meta.addEnchant(VANISHING_CURSE,1, false);
         compass.setItemMeta(meta);
         p.getInventory().setItem(4, compass);
