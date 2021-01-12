@@ -19,10 +19,18 @@ public class main extends JavaPlugin {
     public final static int HUNTING = 3;
     public final static int END = 4;
 
+    // Gets the message text depending on the language
     public String getTranslation(String name, Object... values) {
         String lang = getConfig().getString("lang");
         String format = getConfig().getString(lang + '.' + name);
         return translateAlternateColorCodes('&', String.format(format, values));
+    }
+
+    // Sound
+    public void gongBang() {
+        for (Player player : getServer().getOnlinePlayers()) {
+            player.playSound(player.getLocation(), org.bukkit.Sound.BLOCK_ANVIL_PLACE, 100, 0);
+        }
     }
 
     // Send message to all players

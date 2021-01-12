@@ -46,6 +46,7 @@ public class stage3_hunting implements Listener {
     // Stage start
     public stage3_hunting(main plugin) {
         this.plugin = plugin;
+        plugin.gongBang();
         // Turn on the night
         if (plugin.getConfig().getBoolean("hunt_in_night")) {
             Bukkit.getPlayer(plugin.surv_player).getWorld().setFullTime(13000);
