@@ -50,9 +50,7 @@ public class main extends JavaPlugin {
     // Counts down the remaining time
     public void counter(int value, String msg, int next_stage) {
         if (value <= 1) {
-            getServer().getScheduler().runTask(this, () -> {
-                change_stage(next_stage);
-            });
+            change_stage(next_stage);
         } else {
             if (value <= 60*5) {
                 if (value > 60) {
@@ -63,7 +61,7 @@ public class main extends JavaPlugin {
             } else {
                 say(msg, getTranslation("min", value / 60));
             }
-            task = getServer().getScheduler().runTaskLaterAsynchronously(this, () -> { 
+            task = getServer().getScheduler().runTaskLater(this, () -> { 
                 counter(value / 2, msg, next_stage); 
             }, 20 * value / 2);
         }
