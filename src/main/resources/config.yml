@@ -1,5 +1,6 @@
 handicap: 90
-game_duration: 15
+game_duration: 22
+world_size: 1500
 gift_compass: true
 hunt_in_night: true
 lang: "en_us"

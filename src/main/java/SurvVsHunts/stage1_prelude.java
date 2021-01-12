@@ -19,6 +19,10 @@ public class stage1_prelude implements Listener {
     public stage1_prelude(main plugin) {
         this.plugin = plugin;
         plugin.getCommand("start").setExecutor(new StartgameCmd(plugin));
+        // Limit the size of the world
+        plugin.getServer().getWorld("world").getWorldBorder().setSize(
+            plugin.getConfig().getInt("world_size")
+        );
     }
 
     // Prevent players from moving and looking
