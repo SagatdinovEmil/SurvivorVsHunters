@@ -50,10 +50,11 @@ public class stage2_handicap implements Listener {
     @EventHandler
     public void playerJoinEvent(PlayerJoinEvent e) {
         if (e.getPlayer().getName() != plugin.surv_player) {
-            e.getPlayer().setGameMode(GameMode.SPECTATOR);
-            Location loc = e.getPlayer().getLocation();
+            Player p = e.getPlayer();
+            Location loc = p.getLocation();
             loc.setPitch(90);
-            e.getPlayer().teleport(loc);
+            p.teleport(loc);
+            p.setGameMode(GameMode.SPECTATOR);
         }
     }
 
@@ -70,7 +71,8 @@ public class stage2_handicap implements Listener {
     // Prevent spectators(hunters) from teleporting
     @EventHandler
     public void playerTeleportEvent(PlayerTeleportEvent e) {
-        e.setCancelled(true);
+        if (e.getPlayer().getGameMode() == GameMode.SPECTATOR)
+            e.setCancelled(true);
     }
 
 }
