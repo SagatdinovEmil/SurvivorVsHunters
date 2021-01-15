@@ -38,7 +38,7 @@ public class stage1_prelude implements Listener {
         Player p = e.getPlayer();
         p.setGameMode(GameMode.SPECTATOR);
         Location loc = p.getLocation();
-        loc.setPitch(90);
+        loc.setPitch(-90);
         p.teleport(loc);
         plugin.say(p, "enter_instructions");
     }

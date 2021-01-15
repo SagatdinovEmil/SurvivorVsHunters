@@ -52,7 +52,7 @@ public class stage2_handicap implements Listener {
         if (e.getPlayer().getName() != plugin.surv_player) {
             Player p = e.getPlayer();
             Location loc = p.getLocation();
-            loc.setPitch(90);
+            loc.setPitch(-90);
             p.teleport(loc);
             p.setGameMode(GameMode.SPECTATOR);
         }
